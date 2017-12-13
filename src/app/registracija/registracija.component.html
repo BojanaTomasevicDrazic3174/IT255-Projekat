@@ -1,0 +1,35 @@
+<div class="row">
+  <h1 class="form page-header col-lg-6 col-lg-offset-3" >Registracija na sajt</h1>
+</div>
+
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3">
+<form class="col-lg-5" [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value, myForm.valid)">
+    <br><br>
+      <label class="form">Ime* :</label>
+      <input class="form form-control" type="text" formControlName="clientName">
+      <label class="form ">Prezime* : </label>
+      <input class="form form-control" type="text" formControlName="clientLastName">
+      <label class="form ">Adresa* : </label>
+      <input class="form form-control" type="text" formControlName="clientAddress">
+      <label class="form ">Datum rodjenja : </label>
+      <input class="form form-control" type="text" formControlName="clientDateOfBirth">
+      <label class="form ">Telefon* : </label>
+      <input class="form form-control" type="text" formControlName="clientTelefonNum">
+      <label class="form ">Email* : </label>
+      <input class="form form-control" type="text" formControlName="clientEmail">
+      <label class="form ">Username* : </label>
+      <input class="form form-control" type="text" formControlName="clientUsername">
+      <label class="form ">Password* : </label>
+      <input class="form form-control" type="password" formControlName="clientPassword">
+      <label class="form ">RePassword* : </label>
+      <input class="form form-control" type="password" formControlName="REPASSWORD">
+      <input [hidden]="true"  formControlName="tip">
+      <br>
+      <input class="form form-control btn btn-warning" type="submit" name="submit" value="Registruj se">
+
+
+  </form>
+</div>
+
+</div>

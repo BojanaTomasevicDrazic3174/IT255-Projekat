@@ -1,0 +1,86 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+            <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation" aria-expanded="false">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand"  [routerLink]="['/']">MIB</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navigation">
+                <ul class="nav navbar-nav">
+                  <li *ngIf="isAuth == 'yes'"><a [routerLink]="['racunovodja']"> Nalozi korisnika</a> </li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li *ngIf="isAuth == 'yes'"><a [routerLink]="['/','/']"> Odjava </a> </li>
+                </ul>
+
+            </div>
+    </div>
+</nav>
+
+<div class="jumbotron text-center">
+  <h2>Rent-a-rez MIB</h2>
+  <input type="button" id="allAutomobili" [routerLink]="['racunovodja']" class="btn btn-primary" value="Nalozi korisnika">
+
+</div>
+
+
+<div class="container">
+    <h1 >Izmeni rezervaciju</h1>
+    <form class="col-lg-5" [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value, myForm.valid)">
+      <div class="form-group" [hidden]="true">
+        <label for=""></label>
+        <input type="number" class="form-control" formControlName="idRezervation">
+      </div>
+      <div class="form-group">
+        <label for="">ID automobila*</label>
+        <input type="number" class="form-control" formControlName="idCar" (ngModelChange)="carchange($event)" required>
+      </div>
+      <div class="form-group" [hidden]="true">
+        <label for=""></label>
+        <input type="number" class="form-control" formControlName="idClient">
+      </div>
+      <div class="form-group">
+        <label for="">Id trajanja rezervacije*</label>
+        <input type="text" class="form-control" formControlName="idDuration" (ngModelChange)="timechange($event)" required>
+      </div>
+      <div class="form-group" [hidden]="true">
+        <label for=""></label>
+        <input type="text" class="form-control" formControlName="dateRezervation">
+      </div>
+      <div class="form-group">
+        <label for="">Datum pocetka rezervacije*</label>
+        <input type="text" class="form-control" formControlName="startDate" required>
+      </div>
+      <div class="form-group">
+        <label for="">Datum zavrsetka</label>
+        <input type="text" class="form-control" formControlName="endDate" >
+      </div>
+      <div class="form-group">
+        <label for="">Validna rezervacija</label>
+        <input type="number" class="form-control" formControlName="validRezervation" >
+      </div>
+      <div class="form-group">
+        <label for="">Nacin rezervisanja</label>
+        <input type="text" class="form-control" formControlName="typeRezervation">
+      </div>
+      <div class="form-group">
+        <label for="">Predjena kilometras</label>
+        <input type="number" class="form-control" formControlName="mileagePassed" >
+      </div>
+      <div class="form-group">
+        <label for="">Cena</label>
+        <input  type="text" [(ngModel)]='cena' class="form-control" formControlName="price" >
+      </div>
+      <div class="form-group">
+        <label for="">Status*</label>
+        <input type="text" class="form-control" formControlName="status" required>
+      </div>
+
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
